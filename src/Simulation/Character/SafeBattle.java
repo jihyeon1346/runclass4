@@ -13,7 +13,7 @@ public class SafeBattle {
 
             System.out.println("\n===== 팀 전투 시작 =====");
             System.out.println(team1.getName() + " vs " + team2.getName() + "\n");
-
+        try {
             int maxSize = Math.max(team1.size(), team2.size());
 
             for (int i = 0; i < maxSize; i++) {
@@ -24,7 +24,10 @@ public class SafeBattle {
                     defender.UseQ(attacker);
                 }
             }
-            
+        } catch (DeadChampionActionException e)
+        {
+            System.out.println("\n팀 전투 종료 사망: " + e.getMessage());
+        }
     }
 
 }
